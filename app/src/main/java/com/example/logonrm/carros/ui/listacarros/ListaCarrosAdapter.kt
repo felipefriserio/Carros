@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.logonrm.carros.R
 import com.example.logonrm.carros.model.Carro
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_carro.view.*
 
 class ListaCarrosAdapter(private val carros  : List<Carro>,
@@ -39,6 +40,12 @@ class ListaCarrosAdapter(private val carros  : List<Carro>,
         fun bindView(carro: Carro){
             itemView.tvMarca.text  = carro.marca
             itemView.tvModelo.text = carro.modelo
+
+            Picasso.get()
+                    .load(carro.urlImagem)
+                    .placeholder(R.drawable.carropadrao)
+                    .error(R.drawable.faustao)
+                    .into(itemView.ivFoto)
         }
     }
 }
